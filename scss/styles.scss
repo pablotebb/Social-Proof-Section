@@ -1,0 +1,336 @@
+@use "variables";
+@use "initial";
+@use "mixins";
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  &__title {
+    @include mixins.header_mobile(
+      // color
+      variables.$Very-Dark-Magenta,
+      // font-size
+      2.46em,
+      // margin up
+      82px,
+      // margin right
+      70px,
+      // margin down
+      31px,
+      // margin left
+      68px,
+      // width
+      240px,
+      // line-height
+      37px,
+      // text-align
+      center,
+      // font-weight
+      700
+    );
+  }
+  &__description {
+    @include mixins.header_mobile(
+      // color
+      variables.$Dark-Grayish-Magenta,
+      // font-size
+      19px,
+      // margin up
+      0,
+      // margin right
+      28px,
+      // margin down
+      50px,
+      // margin left
+      39px,
+      // width
+      350px,
+      // line-height
+      27px,
+      // text-align
+      center,
+      // font-weight
+      500
+    );
+  }
+}
+
+.section_stars {
+  // border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 80px auto 13px;
+  &__bar {
+    text-align: center;
+    // border: 1px solid red;
+    padding: 10px 0;
+    background-color: variables.$Light-Grayish-Magenta;
+    margin: 0 20px 54px 20px;
+    border-radius: 5px;
+    min-width: 264px;
+    img {
+      width: 18px;
+      margin-right: 7px;
+    }
+    h4 {
+      padding-top: 13px;
+      font-size: 20px;
+      color: variables.$Very-Dark-Magenta;
+    }
+  }
+}
+
+@media (min-width: 376px) {
+  .section_stars {
+    // border: 1px solid green;
+    min-width: 389px;
+    .bar1 {
+      // border: 1px solid red;
+      @include mixins.bar_or_card_376_px(
+        // is it bar ?
+        true,
+        // position
+        flex-start
+      );
+    }
+    .bar2 {
+      @include mixins.bar_or_card_376_px(
+        // is it bar ?
+        true,
+        // position
+        center
+      );
+    }
+    .bar3 {
+      @include mixins.bar_or_card_376_px(
+        // is it bar ?
+        true,
+        // position
+        flex-end
+      );
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    @include mixins.background_body(
+      // url-1 background
+      variables.$Path-Background-Desktop-Top,
+      // url-2 background
+      variables.$Path-Background-Desktop-Botton
+    );
+    background-size: 400px;
+  }
+  .section_stars {
+    // border: 1px solid green;
+    .bar1 {
+      @include mixins.bar_768_px;
+    }
+    .bar2 {
+      @include mixins.bar_768_px;
+    }
+    .bar3 {
+      @include mixins.bar_768_px;
+    }
+  }
+}
+
+.section_cards {
+  .section_cards_card {
+    // border: 1px solid green;
+    background-color: variables.$Very-Dark-Magenta;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    padding: 42px 41px 41px 34px;
+    margin: 0 26px 20px 25px;
+    width: 372px;
+    min-height: 247px;
+    border-radius: 8px;
+    &__picture {
+      // border: 1px solid green;
+      width: 45px;
+      height: 45px;
+      grid-column: 1 / 2;
+      grid-row: 1;
+      margin-right: 26px;
+      border-radius: 50%;
+    }
+    &__data {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      font-size: 18px;
+      span {
+        // border: 1px solid red;
+        grid-column: 2 / 3;
+        line-height: 20px;
+      }
+      .name {
+        color: variables.$White;
+        font-weight: 700;
+      }
+      .type {
+        color: variables.$Soft-Pink;
+      }
+    }
+    &__description {
+      margin-top: 40px;
+      grid-column: 1 / 3;
+      grid-row: 2;
+      color: variables.$White;
+      font-size: 19px;
+      line-height: 25px;
+    }
+  }
+}
+
+@media (min-width: 376px) {
+  .section_cards {
+    // border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 100px;
+
+    .card1 {
+      @include mixins.bar_or_card_376_px(
+        // is it bar ?
+        false,
+        // position
+        flex-start
+      );
+    }
+    .card2 {
+      @include mixins.bar_or_card_376_px(
+        // is it bar ?
+        false,
+        // position
+        center
+      );
+    }
+    .card3 {
+      @include mixins.bar_or_card_376_px(
+        // is it bar ?
+        false,
+        // position
+        flex-end
+      );
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .section_cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .card1 {
+      grid-column: 1 / 2;
+      margin: auto;
+    }
+    .card2 {
+      grid-column: 2 / 3;
+      margin: auto;
+    }
+    .card3 {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+      margin: 20px auto;
+    }
+  }
+}
+
+@media (min-width: 894px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .header {
+    grid-column: 1 / 6;
+  }
+  .section_stars {
+    grid-column: 6 / -1;
+    .bar1 {
+      margin: 23px 0 25px;
+    }
+    .bar2 {
+      margin: 0 0 25px;
+    }
+  }
+  .section_cards {
+    grid-column: 1 / -1;
+  }
+  .footer {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1160px) {
+  body {
+    background-size: 570px;
+  }
+  .main-container {
+    // border: 4px solid yellow;
+    max-width: 1155px;
+    margin: 80px auto;
+  }
+  .section_stars {
+    // border: 1px solid black;
+    grid-column: 7 / -1;
+  }
+  .section_cards {
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    height: 340px;
+    .card1,
+    .card2,
+    .card3 {
+      margin: 0;
+      margin-right: 40px;
+      width: 380px;
+    }
+    .card3 {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .header {
+    // border: 1px solid red;
+    width: 460px;
+  }
+  .header__title {
+    // border: 1px solid green;
+    width: 330px;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 45px;
+    margin: 0 0 42px;
+    text-align: left;
+  }
+  .header__description {
+    // border: 1px solid yellow;
+    width: 450px;
+    margin: 0;
+    text-align: left;
+  }
+}
+
+.footer {
+  margin-bottom: 64px;
+}
+
+.footer .attribution {
+  font-size: 15px;
+  text-align: center;
+}
+.footer .attribution a {
+  color: hsl(228, 45%, 44%);
+}

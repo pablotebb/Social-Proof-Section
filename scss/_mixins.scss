@@ -1,0 +1,48 @@
+@use "variables";
+
+@mixin header_mobile(
+  $color,
+  $f-sz,
+  $up,
+  $right,
+  $down,
+  $left,
+  $w,
+  $lh,
+  $position,
+  $f-w
+) {
+  color: $color;
+  font-size: $f-sz;
+  margin: $up $right $down $left;
+  width: $w;
+  line-height: $lh;
+  text-align: $position;
+  font-weight: $f-w;
+}
+
+@mixin background_body($path1_url, $path2_url) {
+  background: url($path1_url), url($path2_url);
+  background-repeat: no-repeat;
+  background-position: top left, bottom right;
+}
+
+@mixin bar_or_card_376_px($isIt_Bar: true, $position) {
+  @if $isIt_Bar {
+    padding: 18px 40px 18px;
+  }
+  align-self: $position;
+}
+
+@mixin bar_768_px {
+  display: flex;
+  flex-direction: row;
+  padding: 23px 28px;
+  line-height: 0;
+  img {
+    width: 18px;
+    height: 18px;
+    margin-right: 7px;
+    align-self: center;
+  }
+}
